@@ -1,2 +1,2 @@
-# Checkers
-A game of checkers made using python
+# Tic_Tac_Toe
+A game of tic-tac-toe made using python
