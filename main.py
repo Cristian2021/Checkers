@@ -1,20 +1,19 @@
+import functions
 
-# The position of a particular cell in the board is going to be given by two indexes
-# (first idx for the row, and second idx for the column), here's an example:
-""""
-(0,0) | (0,1) | (0,2)
----------------------
-(1,0) | (1,1) | (1,2)
----------------------
-(2,0) | (2,1) | (2,2)
-"""
+functions.start_new_game()  # initialise the game
 
-board = [
-    ["-", "-", "-"],
-    ["-", "-", "-"],
-    ["-", "-", "-"],
-]
+game_complete = False
+while game_complete is False:
 
+    p1_move = input("Player 1, Enter your move: ")  # may need to use RegEx to check input format
 
+    p2_move = input("Player 2, Enter your move: ")
+
+    if game_complete is True:
+        break
+    else:
+        continue
+
+# print("Winner: %s", winning_player)
 
 
