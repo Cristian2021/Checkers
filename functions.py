@@ -35,7 +35,7 @@ board_status = {
 def print_board(board):
     print(" %c | %c | %c " % (board["Top-Left"], board["Top-Mid"], board["Top-Right"]))
     print("-----------")
-    print(" %c | %c | %c " % (board["Mid-Left"], board["Center"], board["Top-Right"]))
+    print(" %c | %c | %c " % (board["Mid-Left"], board["Center"], board["Mid-Right"]))
     print("-----------")
     print(" %c | %c | %c " % (board["Bottom-Left"], board["Bottom-Mid"], board["Bottom-Right"]))
     print("\n")
@@ -84,6 +84,27 @@ def player_move(board, player, position):
     print_board(board)
 
 
-def get_winner(board):
-    
+def check_game_status(board):
+    symbol = "X"
+    for i in range(0, 1):
+        if board["Top-Left"] == symbol and board["Top-Mid"] == symbol and board["Top-Right"] == symbol:  # top row
+            print("HERE")
+            return True, symbol
+        if board["Mid-Left"] == symbol and board["Center"] == symbol and board["Mid-Right"] == symbol:  # mid row
+            return True, symbol
+        if board["Bottom-Left"] == symbol and board["Bottom-Mid"] == symbol and board["Bottom-Right"] == symbol:  # mid row
+            return True, symbol
+        if board["Top-Left"] == symbol and board["Mid-Left"] == symbol and board["Bottom-Left"] == symbol:  # left col
+            return True, symbol
+        if board["Top-Mid"] == symbol and board["Center"] == symbol and board["Bottom-Mid"] == symbol:  # mid col
+            return True, symbol
+        if board["Top-Right"] == symbol and board["Mid-Right"] == symbol and board["Bottom-Right"] == symbol:  # right col
+            return True, symbol
+        if board["Top-Left"] == symbol and board["Center"] == symbol and board["Bottom-Right"] == symbol:  # diagonal 1
+            return True, symbol
+        if board["Top-Right"] == symbol and board["Center"] == symbol and board["Bottom-Left"] == symbol:  # diagonal 2
+            return True, symbol
 
+        symbol = "O"  # check again but for the other symbol
+
+    return False, "Incomplete Game"
