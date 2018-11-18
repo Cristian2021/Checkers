@@ -32,12 +32,12 @@ board_status = {
 }
 
 
-def print_board(board_status):
-    print(" %c | %c | %c " % (board_status["Top-Left"], board_status["Top-Mid"], board_status["Top-Right"]))
+def print_board(board):
+    print(" %c | %c | %c " % (board["Top-Left"], board["Top-Mid"], board["Top-Right"]))
     print("-----------")
-    print(" %c | %c | %c " % (board_status["Mid-Left"], board_status["Center"], board_status["Top-Right"]))
+    print(" %c | %c | %c " % (board["Mid-Left"], board["Center"], board["Top-Right"]))
     print("-----------")
-    print(" %c | %c | %c " % (board_status["Bottom-Left"], board_status["Bottom-Mid"], board_status["Bottom-Right"]))
+    print(" %c | %c | %c " % (board["Bottom-Left"], board["Bottom-Mid"], board["Bottom-Right"]))
     print("\n")
 
 
@@ -54,29 +54,32 @@ def start_new_game(player_1, player_2):
 
 
 def player_move(board, player, position):
-    if player is 1:
+    if player == 1:
         symbol = "X"
     else:
         symbol = "O"
 
-    if position is (0, 0):
-        board["Top_Left"] = symbol
-    elif position is (0, 1):
+    if position == [0, 0]:
+        board["Top-Left"] = symbol
+    elif position == [0, 1]:
         board["Top-Mid"] = symbol
-    elif position is (0, 2):
+    elif position == [0, 2]:
         board["Top-Right"] = symbol
-    elif position is (1, 0):
+    elif position == [1, 0]:
         board["Mid-Left"] = symbol
-    elif position is (1, 1):
+    elif position == [1, 1]:
         board["Center"] = symbol
-    elif position is (1, 2):
+    elif position == [1, 2]:
         board["Mid-Right"] = symbol
-    elif position is (2, 0):
+    elif position == [2, 0]:
         board["Bottom-Left"] = symbol
-    elif position is (2, 1):
+    elif position == [2, 1]:
         board["Bottom-Mid"] = symbol
-    elif position is (2, 2):
+    elif position == [2, 2]:
         board["Bottom-Right"] = symbol
+    else:
+        print("Error, no coordinates recognised")
+        exit(0)
 
     print_board(board)
 
