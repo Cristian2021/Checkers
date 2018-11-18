@@ -21,6 +21,8 @@ while game_complete is False:
     p2_move = [p2_move_row, p2_move_col]
     functions.player_move(functions.board_status, 2, p2_move)
 
+    functions.get_winner(functions.board_status)
+
     if game_complete is True:
         break
     else:

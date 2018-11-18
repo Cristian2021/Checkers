@@ -1,8 +1,19 @@
+board_status = {
+    "Top-Left": "-",
+    "Top-Mid": "-",
+    "Top-Right": "-",
 
-a = ["0", 0]
-b = [0, 0]
+    "Mid-Left": "-",
+    "Center": "-",
+    "Mid-Right": "-",
 
-if a == [0, 0]:
-    print("yes")
-else:
-    print("no")
+    "Bottom-Left": "-",
+    "Bottom-Mid": "-",
+    "Bottom-Right": "-"
+
+}
+
+
+for i in board_status:
+    print(board_status[i])
+

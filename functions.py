@@ -84,7 +84,6 @@ def player_move(board, player, position):
     print_board(board)
 
 
-
-def get_winner(board_status):
-    print("placeholder")
+def get_winner(board):
+    
 
