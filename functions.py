@@ -44,7 +44,7 @@ def print_board(board):
 def start_new_game(player_1, player_2):
     print("This is a simple game of tic-tac-toe")
     print("How to play: Each player will type either an 'X' or 'O' followed by a set of coordinates "
-          "these coordinates are of the form (x,y).")
+          "these coordinates are of the form (x,y)")
     print("\n")
     print_board(board_status)
     print(player_1, " = X")
@@ -80,6 +80,17 @@ def player_move(board, player, position):
     else:
         print("Error, no coordinates recognised")
         exit(0)
+
+    print_board(board)
+
+
+def bot_move(board):
+    symbol = "O"
+
+    for i in board:
+        if board[i] == "-":
+            board[i] = symbol
+            break
 
     print_board(board)
 
