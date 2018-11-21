@@ -1,3 +1,4 @@
+import constants
 
 
 def play_human_opponent():
@@ -57,6 +58,7 @@ def play_bot_opponent():
 
     functions.start_new_game(player_name, "bot")
 
+    spaces_covered = 0  # how much of the board has been filled up
     game_complete = (False, "Incomplete Game")
     while game_complete[0] is False:
 
@@ -66,32 +68,45 @@ def play_bot_opponent():
         p1_move = [player_move_row, player_move_col]
 
         functions.player_move(functions.board_status, 1, p1_move)
+        spaces_covered += 1
 
         game_complete = functions.check_game_status(functions.board_status)
+
+        if spaces_covered == constants.TOTAL_BOXES and game_complete[0] is not True:
+            game_complete = [True, "Tie"]
 
         if game_complete[0] is True:
             if game_complete[1] == "X":
                 winning_player = player_name
-            else:
+            elif game_complete[1] == "O":
                 winning_player = "bot"
+            elif game_complete[1] == "Tie":
+                winning_player = "None"
             break
 
         print("Bot is making a move...")
         time.sleep(2)
         functions.bot_move(functions.board_status)
+        spaces_covered += 1
 
         game_complete = functions.check_game_status(functions.board_status)
+
+        if spaces_covered == constants.TOTAL_BOXES and game_complete[0] is not True:
+            game_complete = [True, "Tie"]
 
         if game_complete[0] is True:
             if game_complete[1] == "X":
                 winning_player = player_name
-            else:
+            elif game_complete[1] == "O":
                 winning_player = "bot"
+            elif game_complete[1] == "Tie":
+                winning_player = "None"
             break
-        else:
-            continue
 
-    print("Winner: %s" % winning_player)
+    if winning_player != "None":
+        print("Winner: %s" % winning_player)
+    else:
+        print("The game is a tie!")
 
 
 game_type = input("Would you like to play against a bot or another human opponent? "

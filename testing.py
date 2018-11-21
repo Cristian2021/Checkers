@@ -1,3 +1,4 @@
+
 board_status = {
     "Top-Left": "-",
     "Top-Mid": "-",
@@ -13,7 +14,4 @@ board_status = {
 
 }
 
-
-for i in board_status:
-    print(board_status[i])
-
+print(board_status[2])

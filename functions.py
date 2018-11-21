@@ -1,5 +1,4 @@
 
-
 # The position of a particular cell in the board is going to be given by two indexes
 # (first idx for the row, and second idx for the column), here's an example:
 """"
@@ -31,6 +30,9 @@ board_status = {
 
 }
 
+move_list = ["Top-Left", "Top-Mid", "Top-Right", "Mid-Left", "Center", "Mid-Right", "Bottom-Left", "Bottom-Mid",
+             "Bottom-Right"]
+
 
 def print_board(board):
     print(" %c | %c | %c " % (board["Top-Left"], board["Top-Mid"], board["Top-Right"]))
@@ -48,7 +50,7 @@ def start_new_game(player_1, player_2):
     print("\n")
     print_board(board_status)
     print(player_1, " = X")
-    print(player_2 , "= O")
+    print(player_2, "= O")
     print("\n")
     print(player_1, " goes first")
 
@@ -84,22 +86,25 @@ def player_move(board, player, position):
     print_board(board)
 
 
-def bot_move(board):
+def bot_move(board):  # bot just makes legal moves with no strategy
+    from random import randint
     symbol = "O"
 
-    for i in board:
-        if board[i] == "-":
-            board[i] = symbol
-            break
+    legal_move = False
+
+    while legal_move is False:
+        move = move_list[randint(0, 8)]
+        if board[move] == '-':
+            legal_move = True
+            board[move] = symbol
 
     print_board(board)
 
 
 def check_game_status(board):
     symbol = "X"
-    for i in range(0, 1):
+    for i in range(0, 2):
         if board["Top-Left"] == symbol and board["Top-Mid"] == symbol and board["Top-Right"] == symbol:  # top row
-            print("HERE")
             return True, symbol
         if board["Mid-Left"] == symbol and board["Center"] == symbol and board["Mid-Right"] == symbol:  # mid row
             return True, symbol
